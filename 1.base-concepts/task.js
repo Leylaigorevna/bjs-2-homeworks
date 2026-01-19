@@ -1,9 +1,6 @@
 "use strict"
 
 function solveEquation(a, b, c) {
-	let arr = [];
-
-	return arr;
 
 	const d = b ** 2 - 4 * a * c;
 	if (d < 0) {
@@ -22,13 +19,19 @@ function solveEquation(a, b, c) {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  let monthlyRate = (percent / 100) / 12;
-  let bodyCredit = amount - contribution;
-  let monthlyPayment;
+    let monthlyRate = (percent / 100) / 12;
 
-  monthlyPayment = bodyCredit * (monthlyRate + (monthlyRate / (((1 + monthlyRate)** 12) - 1)))
+    let bodyCredit = amount - contribution;
+    let monthlyPayment;
+    if (monthlyRate === 0) {
+        monthlyPayment = bodyCredit / countMonths;
+    } else {
+        monthlyPayment = bodyCredit * (monthlyRate + (monthlyRate / (Math.pow(1 + monthlyRate, countMonths) - 1)));
+    }
 
-  let totalAmount = monthlyPayment * countMonths;
-  totalAmount = +totalAmount.toFixed(2);
-  return totalAmount;
+    let totalAmount = monthlyPayment * countMonths;
+
+    totalAmount = +totalAmount.toFixed(2);
+
+    return totalAmount;
 }
