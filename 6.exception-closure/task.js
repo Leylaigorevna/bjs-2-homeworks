@@ -37,7 +37,7 @@ class Triangle {
     const areaCalculated = Math.sqrt(
       s * (s - this.a) * (s - this.b) * (s - this.c)
     );
-    return areaCalculated.toFixed(3);
+    return +areaCalculated.toFixed(3);
   }
 }
 
